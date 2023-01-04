@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class gameController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         boxControllerClass = GetComponent<boxController>();
+        Application.targetFrameRate = 60;
     }
     void Update(){
         if(IsGameRunning){
@@ -55,5 +57,8 @@ public class gameController : MonoBehaviour
         if(isLeftForce) rb.AddForce(Vector3.left * killForceAmt,ForceMode.Impulse);
         else rb.AddForce(Vector3.right * killForceAmt,ForceMode.Impulse);
         IsGameRunning = false;
+    }
+    public void ReplayGame(){
+        SceneManager.LoadScene("Level 1");
     }
 }
