@@ -17,32 +17,7 @@ public class boxController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(IsGameRunning){
-
-        if (lastElement.transform.position.x != 0 && !isLeft)
-        {
-            if (lastElement.transform.position.x > 0)
-            {
-                lastElement.transform.position = lastElement.transform.position - new Vector3(5, 0, 0) * Time.deltaTime;
-            }
-            else if (lastElement.transform.position.x <= 0)
-            {
-                addObject();
-            }
-        }
-
-        if (lastElement.transform.position.x != 0 && isLeft)
-        {
-            if (lastElement.transform.position.x < 0)
-            {
-                lastElement.transform.position = lastElement.transform.position + new Vector3(5, 0, 0) * Time.deltaTime;
-            }
-            else if (lastElement.transform.position.x >= 0)
-            {
-                addObject();
-            }
-        }
-        }
+        
     }
     public void addObject()
     {

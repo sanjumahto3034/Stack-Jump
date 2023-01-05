@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8027535706487035852}
   - component: {fileID: 3858084707193674394}
   - component: {fileID: 8527672677715987182}
+  - component: {fileID: -4157867617033808943}
+  - component: {fileID: 4127052424510208392}
   m_Layer: 0
   m_Name: WinterCubeMedium
   m_TagString: Untagged
@@ -86,6 +88,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4157867617033808943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457588797840333050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2a09e7a7b74f49a6185d863aca5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &4127052424510208392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457588797840333050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000002, y: 1.1358337, z: 1.9999998}
+  m_Center: {x: 0, y: 0.06791667, z: 0}
 --- !u!1 &3911703358691660272
 GameObject:
   m_ObjectHideFlags: 0
