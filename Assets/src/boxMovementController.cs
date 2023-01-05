@@ -6,6 +6,7 @@ public class boxMovementController : MonoBehaviour
 {
    private bool isFloating = true;
    private float boxFloatingSpeed = 3f;
+   private int id = 0;
 
 
     void Start(){
@@ -26,5 +27,9 @@ public class boxMovementController : MonoBehaviour
 
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
+    }
+    
+    public void setId(int _id){
+        id = _id;
     }
 }

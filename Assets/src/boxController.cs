@@ -8,10 +8,13 @@ public class boxController : MonoBehaviour
     public GameObject box;
     private GameObject lastElement;
     public float yOffsetOfBox;
+    private int countId = -1;
     bool isLeft = false;
     [HideInInspector]public bool IsGameRunning = true;
+    private int highScore;
     void Start()
     {
+        highScore = PlayerPrefs.GetInt("score");
         GameObject obj = Instantiate(box, new Vector3(0, 1.4f, 0), Quaternion.identity);
         lastElement = obj;
     }
@@ -30,8 +33,14 @@ public class boxController : MonoBehaviour
 
         GameObject boxObject = Instantiate(box, transfrm, Quaternion.identity);
         lastElement = boxObject;
+        lastElement.GetComponent<boxMovementController>().setId(countId);
+        countId++;
     }
     public void youLost(){
         IsGameRunning = false;
+    }
+    public int getCount(){
+        if(highScore<countId)PlayerPrefs.SetInt("score",countId);
+        return countId;
     }
 }

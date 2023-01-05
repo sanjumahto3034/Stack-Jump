@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class gameController : MonoBehaviour
 {
+    public TMP_Text gameScore;
     public float killForceAmt = 30;
     public float jumpForce;
     private Animator anim;
     private Rigidbody rb;
     private boxController boxControllerClass;
+    
+    private int currentScore = 0;
 
     private bool isJumping = false;
     private bool IsGameRunning = true;
@@ -50,6 +54,8 @@ public class gameController : MonoBehaviour
             if(IsGameRunning)boxControllerClass.addObject();
             Debug.Log("safe Collider");
             isJumping = false;
+            currentScore = boxControllerClass.getCount();
+            gameScore.SetText(currentScore.ToString());
         }
     }
     void youDeadForce(bool isLeftForce){
