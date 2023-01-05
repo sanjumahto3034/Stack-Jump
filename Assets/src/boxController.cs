@@ -7,6 +7,7 @@ public class boxController : MonoBehaviour
     public float offsetXAmt = 10;
     public GameObject box;
     private GameObject lastElement;
+    public float yOffsetOfBox;
     bool isLeft = false;
     [HideInInspector]public bool IsGameRunning = true;
     void Start()
@@ -24,7 +25,7 @@ public class boxController : MonoBehaviour
         int spawnRange = Random.Range(0, 20);
         float offsetX = spawnRange % 2 == 0 ? offsetXAmt: offsetXAmt * -1;
         isLeft = (offsetX < 0) ? true : false;
-        var transfrm = new Vector3(offsetX,lastElement.transform.position.y + 1.4f,0);
+        var transfrm = new Vector3(offsetX,lastElement.transform.position.y + yOffsetOfBox,0);
 
 
         GameObject boxObject = Instantiate(box, transfrm, Quaternion.identity);

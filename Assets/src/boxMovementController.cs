@@ -9,7 +9,8 @@ public class boxMovementController : MonoBehaviour
 
 
     void Start(){
-        StartCoroutine(timeRemainToDestroy(10));
+        boxFloatingSpeed = Random.Range(2,7);
+        StartCoroutine(timeRemainToDestroy(60));
     }
     void Update(){
              if(isFloating)transform.position = Vector3.MoveTowards(transform.position,new Vector3(0,transform.position.y,0),Time.deltaTime * boxFloatingSpeed);
