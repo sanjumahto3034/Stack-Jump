@@ -38,9 +38,11 @@ public class boxController : MonoBehaviour
     }
     public void youLost(){
         IsGameRunning = false;
+
     }
-    public int getCount(){
+    public int getCount(){ 
         if(highScore<countId)PlayerPrefs.SetInt("score",countId);
         return countId;
     }
 }
+

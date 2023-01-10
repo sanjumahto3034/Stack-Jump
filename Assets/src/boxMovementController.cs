@@ -30,6 +30,9 @@ public class boxMovementController : MonoBehaviour
     }
     
     public void setId(int _id){
+       /*
+        * -> This is used to set unique 
+        */
         id = _id;
     }
 }
