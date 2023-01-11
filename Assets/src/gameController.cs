@@ -17,8 +17,10 @@ public class gameController : MonoBehaviour
     
     private int currentScore = 0;
 
-    private bool isJumping = false;
+    private bool isJumping = true;
     private bool IsGameRunning = true;
+    int currentBoxId = -1;
+
     void Start(){
         jumpAudio = GetComponent<AudioSource>();
         youLostCanvas.SetActive(false);
@@ -44,7 +46,7 @@ public class gameController : MonoBehaviour
             isJumping = true;
         }
     }
-    void OnCollisionEnter(Collision other){
+    void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "rightCollider"){
             youDeadForce(false);
             Debug.Log("Right Collider");
@@ -55,8 +57,18 @@ public class gameController : MonoBehaviour
             Debug.Log("Left Collider");
             
         }
+          isJumping = false;
+            currentScore = boxControllerClass.getCount();
+            gameScore.SetText(currentScore.ToString());
+    }
+    void OnCollisionEnter(Collision other){
+       
          if(other.gameObject.tag == "baseCollider"){
-            if(IsGameRunning)boxControllerClass.addObject();
+            // if(other.gameObject.GetComponent<boxMovementController>())
+            if(IsGameRunning && other.gameObject.transform.parent.GetComponent<boxMovementController>().getId() != currentBoxId){
+                currentBoxId = other.gameObject.transform.parent.GetComponent<boxMovementController>().getId();
+                boxControllerClass.addObject();
+            }
             Debug.Log("safe Collider");
             isJumping = false;
             currentScore = boxControllerClass.getCount();
@@ -65,16 +77,17 @@ public class gameController : MonoBehaviour
         }
     }
     void youDeadForce(bool isLeftForce){
-        boxControllerClass.youLost();
-            Handheld.Vibrate();
+        boxControllerClass.youLost(); 
+            Handheld.Vibrate(); // -> vibration after dead
 
-        // if(isLeftForce) rb.AddForce(Vector3.left * killForceAmt,ForceMode.Impulse);
-        // else rb.AddForce(Vector3.right * killForceAmt,ForceMode.Impulse);
+        if(isLeftForce) rb.AddForce(Vector3.left * killForceAmt,ForceMode.Impulse);
+        else rb.AddForce(Vector3.right * killForceAmt,ForceMode.Impulse); 
         IsGameRunning = false;
         youLostCanvas.SetActive(true);
 
     }
     public void ReplayGame(){
+        /* Replay function call on button click canvas */
         SceneManager.LoadScene("Level 1");
     }
 }
